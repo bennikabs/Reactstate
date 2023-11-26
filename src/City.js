@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 
 export default function City(props) {
+let [temperature, setTemperature]= useState(props.temperature);
+
+function showFahrenheit(event){
+  event.preventDefault();
+  setTemperature(Math.round((props.temperature * 9) / 5 + 32));}
+  
   return (
-    <div class="City">
-      It is {props.temperature}°C | °F in {props.name}
+    <div className="City">
+      It is {temperature}°C | <a href="/" onClick={showFahrenheit}> °F </a>in {props.name}
     </div>
   );
 }
